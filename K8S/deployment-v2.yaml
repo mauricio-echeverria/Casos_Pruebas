@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pubsub-v2
+spec:
+  selector:
+    matchLabels:
+      app: pubsub-v2
+  template:
+    metadata:
+      labels:
+        app: pubsub-v2
+    spec:
+      serviceAccountName: pubsub-v2-sa
+      containers:
+      - name: subscriber-v2
+        image: us-docker.pkg.dev/google-samples/containers/gke/pubsub-sample:v1
