@@ -1,3 +1,6 @@
 export GOOGLE_APPLICATION_CREDENTIALS=/Users/mauricioecheverria/Desktop/Demo2/credentials/credentials.json
+export PROJECT_ID=devops-page
+export PUBSUB_SUBSCRIPTION=echo-read
+
 pip3 install -r requirements.txt
 python3 main.py
