@@ -1,9 +1,12 @@
 from concurrent.futures import TimeoutError
 from google.cloud import pubsub_v1
+import os
+
 
 # TODO(developer)
-project_id = "[PROJECT-ID]"
-subscription_id = "echo-read"
+project_id = os.environ['PROJECT_ID']
+subscription_name = os.environ['PUBSUB_SUBSCRIPTION']
+
 # Number of seconds the subscriber should listen for messages
 timeout = 5.0
 
@@ -11,7 +14,7 @@ timeout = 5.0
 subscriber = pubsub_v1.SubscriberClient()
 # The `subscription_path` method creates a fully qualified identifier
 # in the form `projects/{project_id}/subscriptions/{subscription_id}`
-subscription_path = subscriber.subscription_path(project_id, subscription_id)
+subscription_path = subscriber.subscription_path(project_id, subscription_name)
 
 def callback(message: pubsub_v1.subscriber.message.Message) -> None:
     print(f"Received {message}.")
